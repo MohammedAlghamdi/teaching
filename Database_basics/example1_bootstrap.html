@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expanded SQL Tutorial Example</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    pre { background-color: #f4f4f4; padding: 10px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
+</style>
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+<h1>Expanded SQL Syntax Tutorial Example</h1>
+
+<h2>Creating a Table</h2>
+<h3>SQL Command:</h3>
+<pre><code>CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    email VARCHAR(255)
+);</code></pre>
+<p><strong>Expected Outcome:</strong> A new table named <code>customers</code> is created.</p>
+
+<h2>Inserting Multiple Rows into Table</h2>
+<h3>SQL Command:</h3>
+<pre><code>INSERT INTO customers (customer_id, name, age, email) VALUES
+(1, 'John Doe', 30, 'john.doe@example.com'),
+(2, 'Jane Doe', 25, 'jane.doe@example.com'),
+(3, 'Alice Johnson', 28, 'alice.j@example.com'),
+(4, 'Bob Smith', 32, 'bob.smith@example.com');</code></pre>
+<p><strong>Expected Outcome:</strong> Four new rows are added to the <code>customers</code> table.</p>
+
+<h2>Selecting Data from Table</h2>
+<h3>SQL Command:</h3>
+<pre><code>SELECT * FROM customers;</code></pre>
+<p><strong>Expected Outcome:</strong> Displays all rows from the <code>customers</code> table.</p>
+
+<h2>Updating Data for Multiple Rows</h2>
+<h3>SQL Command:</h3>
+<pre><code>UPDATE customers SET age = age + 1 WHERE age &lt; 30;</code></pre>
+<p><strong>Expected Outcome:</strong> Ages of customers under 30 are incremented by 1.</p>
+
+<h2>Deleting a Specific Row</h2>
+<h3>SQL Command:</h3>
+<pre><code>DELETE FROM customers WHERE customer_id = 2;</code></pre>
+<p><strong>Expected Outcome:</strong> The row with <code>customer_id</code> 2 (Jane Doe) is deleted.</p>
+
+<h2>Adding a New Column for Customer Address</h2>
+<h3>SQL Command:</h3>
+<pre><code>ALTER TABLE customers ADD address VARCHAR(255);</code></pre>
+<p><strong>Expected Outcome:</strong> A new column named <code>address</code> is added to the <code>customers</code> table.</p>
+
+<h2>Inserting New Data with Address</h2>
+<h3>SQL Command:</h3>
+<pre><code>INSERT INTO customers (customer_id, name, age, email, address) VALUES
+(5, 'Eve Adams', 29, 'eve.adams@example.com', '123 Apple St.'),
+(6, 'Gary White', 35, 'gary.white@example.com', '456 Orange Ave.');</code></pre>
+<p><strong>Expected Outcome:</strong> Two new rows are added, including addresses.</p>
+
+<h2>Sorting Data by Age</h2>
+<h3>SQL Command:</h3>
+<pre><code>SELECT * FROM customers ORDER BY age DESC;</code></pre>
+<p><strong>Expected Outcome:</strong> Displays all customers, sorted by age in descending order.</p>
+
+<p>This expanded tutorial provides a comprehensive view of SQL commands and their practical application, enhancing the demonstration of SQL capabilities for database management and manipulation.</p>
+</div>
+</body>
+</html>

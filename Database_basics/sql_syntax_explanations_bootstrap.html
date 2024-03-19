@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Syntax Explanations</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #2F4F4F; }
+        p { margin-left: 20px; }
+        code { background-color: #F5F5F5; padding: 2px 4px; }
+    </style>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Syntax Explanations</h1>
+        
+        <h2>Data Definition Language (DDL) Commands:</h2>
+        <p><code>CREATE TABLE table_name (column_name data_type(size), column_name data_type(size));</code></p>
+        <p>This command is used to create a new table in the database, defining each column's name, data type, and size.</p>
+        
+        <p><code>CREATE TABLE TABLE_NAME AS SELECT column_name FROM table_name;</code></p>
+        <p>This creates a new table by selecting columns from an existing table.</p>
+
+        <h2>Data Manipulation Language (DML) Commands:</h2>
+        <p><code>INSERT INTO table_name (column_name) VALUES (value);</code></p>
+        <p>This inserts new data into the table.</p>
+        
+        <p><code>SELECT column_name FROM table_name;</code></p>
+        <p>This selects data from a table.</p>
+        
+        <p><code>UPDATE table_name SET column_name = value WHERE condition;</code></p>
+        <p>This updates data in a table based on a condition.</p>
+        
+        <p><code>DELETE FROM table_name WHERE condition;</code></p>
+        <p>This deletes data from a table based on a condition.</p>
+
+        <h2>Constraints and Keys:</h2>
+        <p><code>CREATE TABLE table_name (column_name data_type PRIMARY KEY);</code></p>
+        <p>This sets a column as the primary key, uniquely identifying each record in the table.</p>
+        
+        <p><code>CREATE TABLE table_name (column_name data_type REFERENCES another_table(column_name));</code></p>
+        <p>This creates a foreign key that links to another table's primary key.</p>
+        
+        <p><code>CREATE TABLE table_name (column_name data_type CHECK (condition));</code></p>
+        <p>This creates a constraint that only allows data which satisfies the condition.</p>
+
+        <h2>Altering Table Structure:</h2>
+        <p><code>ALTER TABLE table_name ADD column_name data_type;</code></p>
+        <p>This adds a new column to the table.</p>
+        
+        <p><code>ALTER TABLE table_name DROP COLUMN column_name;</code></p>
+        <p>This removes a column from the table.</p>
+        
+        <p><code>ALTER TABLE table_name MODIFY column_name new_data_type;</code></p>
+        <p>This changes the data type of a column.</p>
+        
+        <h2>Sorting of Data in a Table:</h2>
+        <p><code>SELECT column_name FROM table_name ORDER BY column_name ASC|DESC;</code></p>
+        <p>This sorts the selected data in ascending or descending order.</p>
+    </div>
+</body>
+</html>
