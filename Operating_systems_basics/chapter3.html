@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .container { padding: 20px; }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+        <h1>Chapter 3</h1>
+
+<p>This document outlines several useful Linux commands that have been mentioned in Chapter 3 of the lab manuel pdf file </p>
+
+<h2>Table of Contents</h2>
+
+<ul>
+<li><a href="#chapter-3">Chapter 3</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#creating-soft-link-to-a-file">Creating Soft Link to a File</a></li>
+<li><a href="#creating-hard-links">Creating Hard Links</a></li>
+<li><a href="#extracting-a-tar-file">Extracting a Tar File</a></li>
+<li><a href="#creating-a-tar-file">Creating a Tar File</a></li>
+<li><a href="#vim-editor-commands">Vim Editor Commands</a></li>
+<li><a href="#becoming-root-user">Becoming Root User</a></li>
+<li><a href="#using-sudo-command">Using Sudo Command</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#locate-command">Locate Command</a></li>
+<li><a href="#finding-datetime-in-different-timezones">Finding Date/Time in Different Timezones</a></li>
+</ul></li>
+</ul>
+
+<h2>Creating Soft Link to a File</h2>
+
+<ul>
+<li>Command: <code>ln -s /etc/hostname name</code></li>
+<li>Explanation: This command creates a symbolic (soft) link named <code>name</code> that points to <code>/etc/hostname</code>. Soft links are pointers to the original file, allowing you to access the file from another location.</li>
+<li>Example: <code>ln -s /etc/hosts link_to_hosts</code></li>
+</ul>
+
+<h2>Creating Hard Links</h2>
+
+<ul>
+<li>Command: <code>echo "Hello World!" &gt; hello.txt</code> followed by <code>ln hello.txt bye.txt</code></li>
+<li>Explanation: This set of commands first creates a file named <code>hello.txt</code> containing the text "Hello World!" and then creates a hard link named <code>bye.txt</code> pointing to the same physical location on the disk as <code>hello.txt</code>. Unlike soft links, hard links are indistinguishable from the original file.</li>
+<li>Example: <code>ln /etc/hosts copy_of_hosts</code></li>
+</ul>
+
+<h2>Extracting a Tar File</h2>
+
+<ul>
+<li>Command: For gzip compressed files: <code>tar -xzvf files.tar.gz</code>, for bzip2 compressed files: <code>tar -xjvf files.tar.bz2</code></li>
+<li>Explanation: These commands extract files from tar archives. The <code>-x</code> option specifies extraction, <code>-z</code> and <code>-j</code> specify the compression method (gzip and bzip2, respectively), <code>-v</code> enables verbose mode, and <code>-f</code> specifies the filename of the archive.</li>
+</ul>
+
+<h2>Creating a Tar File</h2>
+
+<ul>
+<li>Command: <code>tar -czvf files.tar.gz hello.c bye.txt</code></li>
+<li>Explanation: This command creates a compressed tar archive named <code>files.tar.gz</code> containing the files <code>hello.c</code> and <code>bye.txt</code>. The <code>-c</code> option specifies creation of an archive, <code>-z</code> enables gzip compression, <code>-v</code> enables verbose mode, and <code>-f</code> specifies the filename of the archive.</li>
+</ul>
+
+<h2>Vim Editor Commands</h2>
+
+<ul>
+<li>Commands and Explanations:
+<ul>
+<li>Exit vim: <code>:q</code> - Quits Vim. If there are unsaved changes, Vim will not allow you to quit.</li>
+<li>Open a new or existing file: <code>vim filename</code> - Opens <code>filename</code> for editing in Vim. If <code>filename</code> does not exist, Vim starts with a new buffer.</li>
+<li>Save a file in vim: <code>:w</code> - Saves the changes made to the open file.</li>
+<li>Save and quit vim: <code>:wq</code> or <code>:x</code> - Saves changes and exits Vim.</li>
+<li>Quit without saving: <code>:q!</code> - Quits Vim without saving changes.</li>
+</ul></li>
+</ul>
+
+<h2>Becoming Root User</h2>
+
+<ul>
+<li>Command: <code>su -</code></li>
+<li>Explanation: This command switches the current user to the root user, granting administrative privileges. The <code>-</code> option provides an environment similar to that the root user would expect.</li>
+</ul>
+
+<h2>Using Sudo Command</h2>
+
+<ul>
+<li>Commands: <code>sudo less /var/log/secure</code> and <code>sudo !!</code></li>
+<li>Explanation: The <code>sudo</code> command temporarily elevates privileges allowing a permitted user to execute a command as the root user. The <code>sudo !!</code> command repeats the last command entered in the terminal with <code>sudo</code>.</li>
+</ul>
+
+<h2>Environment Variables</h2>
+
+<ul>
+<li>Commands: View all environment variables: <code>printenv</code>, Set up environment variable values: <code>export NAME="Kushal Das"</code></li>
+<li>Explanation: Environment variables are dynamic-named values that affect the behavior of running processes on a computer. <code>printenv</code> displays all environment variables, while <code>export</code> sets a new environment variable or modifies an existing one.</li>
+</ul>
+
+<h2>Locate Command</h2>
+
+<ul>
+<li>Commands: <code>locate firewalld</code> and <code>sudo updatedb</code></li>
+<li>Explanation: The <code>locate</code> command searches for files by name quickly, using a database updated by <code>updatedb</code>. It's useful for finding files when you know part of the name.</li>
+</ul>
+
+<h2>Finding Date/Time in Different Timezones</h2>
+
+<ul>
+<li>Command: <code>TZ=US/Pacific date</code>
+-</li>
+</ul>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

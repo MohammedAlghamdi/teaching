@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Shell Scripting</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+    </style>
+</head>
+<!-- <body>
+    <div class="container">
+        <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+    </div>
+</body> -->
+</html>
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+        <h1>Introduction to Shell Scripting - Chapter 1 and more</h1>
+
+<p>Shell scripting is a powerful tool for automating tasks in Unix-like operating systems. It allows you to combine multiple commands, logic, and utilities into a single script, which can be executed to perform complex operations efficiently. This tutorial will guide you through the basics of shell scripting, covering essential commands and concepts.</p>
+
+<h2>Table of Contents</h2>
+
+<ul>
+<li><a href="#introduction-to-shell-scripting---chapter-1-and-more">Introduction to Shell Scripting - Chapter 1 and more</a></li>
+<li><a href="#table-of-contents">Table of Contents</a>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#displaying-date-and-time">Displaying Date and Time</a></li>
+<li><a href="#user-information">User Information</a></li>
+<li><a href="#navigating-directories">Navigating Directories</a></li>
+<li><a href="#managing-files-and-directories">Managing Files and Directories</a></li>
+<li><a href="#advanced-operations">Advanced Operations</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<h3>Displaying Date and Time</h3>
+
+<ol>
+<li><p><strong>Current Date and Time</strong></p>
+
+<p>The <code>date</code> command displays the current date and time.</p>
+
+<p><code>bash
+date
+</code></p></li>
+<li><p><strong>Yesterday's Date</strong></p>
+
+<p>To display the date for yesterday, use:</p>
+
+<p><code>bash
+date --date="yesterday"
+</code></p></li>
+<li><p><strong>Date 10 Days Ago</strong></p>
+
+<p>To find out what the date was 10 days ago:</p>
+
+<p><code>bash
+date --date="10 days ago"
+</code></p></li>
+<li><p><strong>Calendar</strong></p>
+
+<p>The <code>cal</code> command shows the calendar for the current month.</p>
+
+<p><code>bash
+cal
+</code></p></li>
+</ol>
+
+<h3>User Information</h3>
+
+<ol>
+<li><p><strong>Current User</strong></p>
+
+<p>To display the username of the user executing the script:</p>
+
+<p><code>bash
+whoami
+</code></p></li>
+<li><p><strong>User and Group IDs</strong></p>
+
+<p>The <code>id</code> command shows the user ID and group ID.</p>
+
+<p><code>bash
+id
+</code></p></li>
+</ol>
+
+<h3>Navigating Directories</h3>
+
+<ol>
+<li><p><strong>Current Working Directory</strong></p>
+
+<p>Use <code>pwd</code> to print the current working directory.</p>
+
+<p><code>bash
+pwd
+</code></p></li>
+<li><p><strong>Changing Directories</strong></p>
+
+<ul>
+<li><p>To change to the <code>/home</code> directory:</p>
+
+<p><code>bash
+cd /home
+</code></p></li>
+<li><p>To move to the parent directory:</p>
+
+<p><code>bash
+cd ..
+</code></p></li>
+<li><p>To switch to the user's home directory:</p>
+
+<p><code>bash
+cd ~
+</code></p></li>
+</ul></li>
+</ol>
+
+<h3>Managing Files and Directories</h3>
+
+<ol>
+<li><p><strong>Creating a Directory</strong></p>
+
+<p>To create a new directory named "operating":</p>
+
+<p><code>bash
+mkdir operating
+</code></p></li>
+<li><p><strong>Listing Contents</strong></p>
+
+<p>The <code>ls</code> command lists the contents of a directory.</p>
+
+<p><code>bash
+ls
+</code></p>
+
+<p>For a detailed view, use <code>ls -l</code>.</p></li>
+<li><p><strong>Creating and Viewing Files</strong></p>
+
+<ul>
+<li><p>To print "hello" to a file named "hello.txt":</p>
+
+<p><code>bash
+echo hello &gt; hello.txt
+</code></p></li>
+<li><p>Use <code>cat</code> to display the contents of "hello.txt":</p>
+
+<p><code>bash
+cat hello.txt
+</code></p></li>
+</ul></li>
+<li><p><strong>Copying Files</strong></p>
+
+<p>To copy "hello.txt" to "hello2.txt":</p>
+
+<p><code>bash
+cp hello.txt hello2.txt
+</code></p></li>
+</ol>
+
+<h3>Advanced Operations</h3>
+
+<ol>
+<li><p><strong>Piping and Redirection</strong></p>
+
+<p>Piping (<code>|</code>) allows you to use the output of one command as the input for another.</p>
+
+<p><code>bash
+ls | wc -w
+</code></p>
+
+<p>Redirection (<code>&gt;</code>) is used to send the output of a command to a file.</p>
+
+<p><code>bash
+ls &gt; list.txt
+</code></p></li>
+<li><p><strong>Removing Files and Directories</strong></p>
+
+<ul>
+<li><p>To remove a file:</p>
+
+<p><code>bash
+rm &lt;filename&gt;
+</code></p></li>
+<li><p>To remove a directory and its contents:</p>
+
+<p><code>bash
+rm -r &lt;directory&gt;
+</code></p></li>
+</ul></li>
+<li><p><strong>Using <code>tree</code> to Display Directory Structure</strong></p>
+
+<p>The <code>tree</code> command visually displays the directory structure.</p>
+
+<p><code>bash
+tree
+</code></p></li>
+<li><p><strong>Word and Line Counts</strong></p>
+
+<ul>
+<li><p>To count lines in a file:</p>
+
+<p><code>bash
+wc -l &lt;file&gt;
+</code></p></li>
+<li><p>To count words:</p>
+
+<p><code>bash
+wc -w &lt;file&gt;
+</code></p></li>
+</ul></li>
+</ol>
+
+<hr />
+
+<p>This tutorial covers fundamental shell scripting commands and concepts, aiming to provide a solid foundation for automating tasks in Unix-like environments. As you become more comfortable with these basics, you'll be well-prepared to explore more complex scripting techniques and utilities.</p>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

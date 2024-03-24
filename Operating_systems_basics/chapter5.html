@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: File Permissions</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .container { padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+        <h1>Chapter 5: File Permissions</h1>
+
+<h1>Table of Contents</h1>
+
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#commands-and-concepts">Commands and Concepts</a>
+<ul>
+<li><a href="#ls-command">ls command</a></li>
+<li><a href="#chmod-command">chmod command</a></li>
+<li><a href="#path-variable">PATH variable</a></li>
+<li><a href="#bashprofile-file">.bash_profile file</a></li>
+<li><a href="#bashrc-file">.bashrc file</a></li>
+<li><a href="#etcprofile-file">/etc/profile file</a></li>
+<li><a href="#which-command">which command</a></li>
+<li><a href="#she-bang-or-sha-bang-in-executable-files">she-bang or sha-bang in executable files</a></li>
+</ul></li>
+</ol>
+
+<h2>Overview</h2>
+
+<p>This chapter covers the basic commands and concepts related to file permissions in Linux, including the management of permissions, understanding of the PATH variable, and configuration files.</p>
+
+<h3>Commands and Concepts</h3>
+
+<ul>
+<li><p><strong>ls command</strong>: Used to list files and directories along with their permissions.</p>
+
+<ul>
+<li><strong>Example</strong>: <code>ls -l</code></li>
+<li><strong>Explanation</strong>: This command lists the contents of a directory in long format, showing file permissions, number of links, owner, group, size, and modification date.</li>
+</ul></li>
+<li><p><strong>chmod command</strong>: Changes the file mode bits to alter the access permissions of files and directories.</p>
+
+<ul>
+<li><strong>Example</strong>: <code>chmod 755 myfile.txt</code></li>
+<li><strong>Explanation</strong>: This command changes the permissions of <code>myfile.txt</code> to read, write, and execute for the owner, and read and execute for the group and others.</li>
+</ul></li>
+<li><p><strong>PATH variable</strong>: A shell variable that specifies the directories in which the shell looks for commands.</p>
+
+<ul>
+<li><strong>Example</strong>: <code>echo $PATH</code></li>
+<li><strong>Explanation</strong>: Displays the current directories in the PATH variable where the shell looks for executables.</li>
+</ul></li>
+<li><p><strong>~/.bash_profile file</strong>: A configuration file for bash for users who can log in. It can set environment variables, update $PATH, and execute commands after login.</p>
+
+<ul>
+<li><strong>Example</strong>: Adding <code>export PATH=$PATH:/new/directory</code> to <code>~/.bash_profile</code></li>
+<li><strong>Explanation</strong>: This adds <code>/new/directory</code> to the PATH variable, extending the search path for executable files.</li>
+</ul></li>
+<li><p><strong>.bashrc file</strong>: A special configuration file for your bash terminal, used by users who cannot log in via standard methods. It allows you to define, delete, or update environment variables and commands for new interactive shells.</p>
+
+<ul>
+<li><strong>Example</strong>: Adding <code>alias ll='ls -l'</code> to <code>~/.bashrc</code></li>
+<li><strong>Explanation</strong>: Defines an alias <code>ll</code> for the command <code>ls -l</code>, making it easier to list files with detailed information.</li>
+</ul></li>
+<li><p><strong>/etc/profile file</strong>: Used to configure system-wide settings for all users when a new login shell is created.</p>
+
+<ul>
+<li><strong>Example</strong>: Adding <code>PATH=$PATH:/usr/local/bin</code> to <code>/etc/profile</code></li>
+<li><strong>Explanation</strong>: Extends the PATH variable for all users, adding <code>/usr/local/bin</code> to their search path for executables.</li>
+</ul></li>
+<li><p><strong>which command</strong>: Finds the exact path of the executable being used by a command in the shell.</p>
+
+<ul>
+<li><strong>Example</strong>: <code>which ls</code></li>
+<li><strong>Explanation</strong>: Shows the full path of the <code>ls</code> command executable.</li>
+</ul></li>
+<li><p><strong>Using which command to demonstrate $PATH variable functionality</strong>: Shows how the shell searches for commands in the directories specified in $PATH.</p>
+
+<ul>
+<li><strong>Example</strong>: <code>which nonexistentcommand</code></li>
+<li><strong>Explanation</strong>: Attempts to find the executable for a command that doesn't exist, demonstrating how <code>which</code> searches the PATH.</li>
+</ul></li>
+<li><p><strong>she-bang or sha-bang in executable files</strong>: Indicates the interpreter path for executing scripts.</p>
+
+<ul>
+<li><strong>Example</strong>: Adding <code>#!/bin/bash</code> at the top of a script file.</li>
+<li><strong>Explanation</strong>: Specifies that the script should be executed using the Bash shell interpreter.</li>
+</ul></li>
+</ul>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
