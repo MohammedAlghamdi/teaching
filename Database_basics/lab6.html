@@ -58,6 +58,17 @@ INSERT INTO Enrollments (student_id, course_id) VALUES
 </code></pre>
   </div>
 
+
+  <div class="mt-4">
+    <h5>Cartesian product join</h5>
+    <p>To retrieve a list of students and the courses they're enrolled in:</p>
+    <pre><code class="sql">SELECT Students.name, Courses.course_name
+      SELECT Students.*, Courses.*
+      FROM Students, Courses;
+  </code></pre>
+    </div>
+
+
   <div class="mt-4">
     <h5>INNER JOIN</h5>
     <p>To retrieve a list of students and the courses they're enrolled in:</p>
@@ -83,8 +94,8 @@ LEFT JOIN Courses ON Enrollments.course_id = Courses.course_id;
     <p>If you need to ensure all courses are listed, regardless of student enrollment:</p>
     <pre><code class="sql">SELECT Students.name, Courses.course_name
 FROM Courses
-LEFT JOIN Enrollments ON Courses.course_id = Enrollments.course_id
-LEFT JOIN Students ON Enrollments.student_id = Students.student_id;
+RIGHT JOIN Enrollments ON Courses.course_id = Enrollments.course_id
+RIGHT JOIN Students ON Enrollments.student_id = Students.student_id;
 </code></pre>
   </div>
 
