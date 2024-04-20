@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 6 - Processes in Linux</title>
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+<style>
+    body { font-family: Arial, sans-serif; }
+    h1 { color: #333; }
+    .command { color: #008000; font-weight: bold; }
+    .description { color: #555; }
+    .example { margin-left: 20px; }
+</style>
+</head>
+<body>
+    <!-- <div class="container">
+        <!-- <a href="javascript:history.back()" class="btn btn-primary">Go Back</a> -->
+    </div> -->
+
+<h1>Chapter 6 - Processes in Linux</h1>
+
+<h2>1. Viewing All Running Processes</h2>
+<p><b>Command:</b> <span class="command">ps aux</span></p>
+<p><b>Description:</b> <span class="description">Lists all running processes on your system.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">ps aux</pre>
+
+<h2>2. Finding a Specific Process</h2>
+<p><b>Command:</b> <span class="command">ps aux | grep [keyword]</span></p>
+<p><b>Description:</b> <span class="description">Filters the list of processes to only show those that match the keyword.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">ps aux | grep firefox</pre>
+
+<h2>3. Killing a Process</h2>
+<p><b>Command:</b> <span class="command">kill [PID]</span></p>
+<p><b>Description:</b> <span class="description">Sends a termination signal to the process with the specified Process ID (PID).</span></p>
+<p><b>Example:</b></p>
+<pre class="example">kill 1234</pre>
+
+<h2>4. Forcibly Killing a Process</h2>
+<p><b>Command:</b> <span class="command">kill -9 [PID]</span></p>
+<p><b>Description:</b> <span class="description">Forcefully terminates the process by sending it the KILL signal.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">kill -9 1234</pre>
+
+<h2>5. Listing All Available Signals</h2>
+<p><b>Command:</b> <span class="command">kill -l</span></p>
+<p><b>Description:</b> <span class="description">Lists all the signal names and numbers available for use with kill.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">kill -l</pre>
+
+<h2>6. Listing Open Files</h2>
+<p><b>Command:</b> <span class="command">lsof</span></p>
+<p><b>Description:</b> <span class="description">Shows all open files and the processes that have opened them.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">lsof</pre>
+
+<h2>7. Monitoring System Processes</h2>
+<p><b>Command:</b> <span class="command">top</span></p>
+<p><b>Description:</b> <span class="description">Provides a dynamic real-time view of all running system processes.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">top</pre>
+
+<h2>8. Interactive Process Viewer</h2>
+<p><b>Command:</b> <span class="command">htop</span></p>
+<p><b>Description:</b> <span class="description">An interactive process viewer that offers a more user-friendly and detailed view than top.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">sudo apt-get install htop # First install htop if not present<br>htop</pre>
+
+<h2>9. Accessing Command Manuals</h2>
+<p><b>Command:</b> <span class="command">man [command]</span></p>
+<p><b>Description:</b> <span class="description">Displays the manual page for the specified command.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">man ls</pre>
+
+<h2>10. Getting More Information on a Topic</h2>
+<p><b>Command:</b> <span class="command">info [topic]</span></p>
+<p><b>Description:</b> <span class="description">Provides detailed documentation on the specified topic.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">info libc</pre>
+
+<h2>11. Viewing System Information Files</h2>
+<p><b>Command:</b> <span class="command">cat /proc/[filename]</span></p>
+<p><b>Description:</b> <span class="description">Displays the contents of system information files located in the /proc directory.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">cat /proc/cpuinfo</pre>
+
+<h2>12. Viewing All System Settings</h2>
+<p><b>Command:</b> <span class="command">sysctl -a</span></p>
+<p><b>Description:</b> <span class="description">Lists all kernel parameters and their current values.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">sysctl -a</pre>
+
+<h2>13. Modifying Kernel Parameters Temporarily</h2>
+<p><b>Command:</b> <span class="command">sysctl -w [parameter=value]</span></p>
+<p><b>Description:</b> <span class="description">Temporarily changes a kernel parameter.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">sysctl -w net.ipv4.ip_forward=1</pre>
+
+<h2>14. Viewing a Kernel Parameter</h2>
+<p><b>Command:</b> <span class="command">sysctl [parameter]</span></p>
+<p><b>Description:</b> <span class="description">Displays the current value of a specific kernel parameter.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">sysctl net.ipv4.ip_forward</pre>
+
+<h2>15. Checking IP Forwarding Status</h2>
+<p><b>Command:</b> <span class="command">cat /proc/sys/net/ipv4/ip_forward</span></p>
+<p><b>Description:</b> <span class="description">Displays whether IP forwarding is enabled (1) or disabled (0).</span></p>
+<p><b>Example:</b></p>
+<pre class="example">cat /proc/sys/net/ipv4/ip_forward</pre>
+
+<h2>16. Directly Modifying System Parameters</h2>
+<p><b>Command:</b> <span class="command">echo [value] > /proc/sys/[path]</span></p>
+<p><b>Description:</b> <span class="description">Writes a value directly to a system parameter.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">echo 1 > /proc/sys/net/ipv4/ip_forward</pre>
+
+<h2>17. Applying System Configuration Changes</h2>
+<p><b>Command:</b> <span class="command">sudo sysctl -p /etc/sysctl.conf</span></p>
+<p><b>Description:</b> <span class="description">Reloads and applies system configuration settings from the /etc/sysctl.conf file.</span></p>
+<p><b>Example:</b></p>
+<pre class="example">sudo sysctl -p /etc/sysctl.conf</pre>
+
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+        padding: 20px 0;
+        margin: 0;
+    }
+
+    h2 {
+        color: #090080;
+        margin: 20px 0 10px;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    .command {
+        color: #008000;
+        font-weight: bold;
+    }
+
+    .description {
+        color: #555;
+    }
+
+    .example {
+        margin-left: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    pre {
+        margin: 0;
+    }
+</style>
