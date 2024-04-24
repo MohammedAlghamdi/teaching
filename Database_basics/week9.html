@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9: Indexes and Views</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        code {
+            color: #d14;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 9: Indexes and Views</h1>
+    <h2>Employee Table</h2>
+    <pre><code>
+        CREATE TABLE emp (
+            EMPNO NUMBER(4) PRIMARY KEY,
+            ENAME VARCHAR2(10),
+            JOB VARCHAR2(9),
+            MGR NUMBER(4),
+            HIREDATE DATE,
+            SAL NUMBER(7, 2),
+            COMM NUMBER(7, 2),
+            DEPTNO NUMBER(2));</code></pre>
+
+    <h2>Department Table</h2>
+    <pre><code>
+        CREATE TABLE dept (
+            DEPTNO NUMBER(2) PRIMARY KEY,
+            DNAME VARCHAR2(14),
+            LOC VARCHAR2(13));</code></pre>
+
+    <h2>Sample Data Insertion for Employee Table</h2>
+    <pre><code>
+        INSERT INTO emp VALUES 
+            (7369, 'SMITH', 'CLERK', 7902, '17/12/1980', 800, NULL, 20),
+            (7499, 'ALLEN', 'SALESMAN', 7698,'20/02/1981', 1600, 300, 30),
+            (7521, 'WARD', 'SALESMAN', 7698,'22/02/1981', 1250, 500, 30),
+            (7566, 'JONES', 'MANAGER', 7839,'02/04/1981', 2975, NULL, 20),
+            (7654, 'MARTIN', 'SALESMAN', 7698,'28/09/1981', 1250, 1400, 30),
+            (7698, 'BLAKE', 'MANAGER', 7839,'01/05/1981', 2850, NULL, 30),
+            (7782, 'CLARK', 'MANAGER', 7839,'09/06/1981', 2450, NULL, 10),
+            (7788, 'SCOTT', 'ANALYST', 7566,'09/12/1982', 3000, NULL, 20),
+            (7839, 'KING', 'PRESIDENT', NULL,'17/11/1981', 5000, NULL, 10);
+    </code></pre>
+
+    <h2>Sample Data Insertion for Department Table</h2>
+    <pre><code>
+        INSERT INTO dept VALUES 
+            (10, 'Accounting', 'NewYork'),
+            (20, 'Research', 'Dallas'),
+            (30, 'Sales', 'Chicago'),
+            (40, 'Operations', 'Boston');
+            </code></pre>
+    
+    <h2>Creating an Index</h2>
+
+    <h3> Creating a simple index </h3>
+    <pre><code>
+        CREATE INDEX idx_deptno ON emp(deptno);
+    </code></pre>   
+    
+
+    <h3> Creating a non-unique index </h3>
+    <pre><code>
+        CREATE INDEX idx_salary ON emp(sal);
+    </code></pre>   
+
+    <h3> Creating  a composite index</h3>
+    <pre><code>
+        CREATE INDEX idx_ename_job ON emp(ename, job);
+    </code></pre> 
+
+    <h3> Example of dropping an index </h3>
+    <pre><code>
+        DROP INDEX idx_deptno;
+    </pre></code>
+
+
+    <h2> View Creation </h2> 
+
+
+<h2> View Creation </h2> 
+
+<pre><code>
+CREATE VIEW dept10_employees AS
+SELECT * FROM emp
+WHERE deptno = 10;
+</code></pre>
+
+<pre><code>
+CREATE VIEW dept20_employees AS
+SELECT * FROM emp
+WHERE deptno = 20;
+</code></pre>
+
+<pre><code>
+CREATE VIEW salesman_details AS
+SELECT ename, job, sal FROM emp
+WHERE job = 'SALESMAN';
+</code></pre>
+
+
+<h3> Querying the Views </h3>
+<pre><code>
+    SELECT * FROM dept10_employees;
+</code></pre>
+<pre><code>
+    SELECT * FROM dept20_employees;
+    </code></pre>
+<pre><code>
+    SELECT * FROM salesman_details;
+</code></pre>
+
+
+
+</body>
+</html>
