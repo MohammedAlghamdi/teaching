@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 10 : Aggregate functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Week 10 : Aggregate functions</h1>
+
+    <h2>Create Table</h2>
+    <pre>
+CREATE TABLE Sales (
+    Order_ID INT,
+    Order_Date DATE,
+    Order_Price DECIMAL,
+    Order_Quantity INT,
+    Customer_Name VARCHAR(100)
+);
+    </pre>
+
+    <h2>Insert Data into Sales Table</h2>
+    <pre>
+INSERT INTO Sales (Order_ID, Order_Date, Order_Price, Order_Quantity, Customer_Name) VALUES
+(1, '2005-12-22', 160, 2, 'Smith'),
+(2, '2005-08-10', 190, 2, 'Johnson'),
+(3, '2005-07-13', 500, 5, 'Baldwin'),
+(4, '2005-07-15', 420, 2, 'Smith'),
+(5, '2005-12-22', 1000, 4, 'Wood'),
+(6, '2005-10-02', 820, 4, 'Smith'),
+(7, '2005-11-03', 2000, 2, 'Baldwin');
+    </pre>
+
+    <h2>SQL Commands Using Aggregate Functions</h2>
+    <h3>1. Count all rows where Customer_Name is 'Smith'</h3>
+    <pre>SELECT COUNT(*) FROM Sales WHERE Customer_Name = 'Smith';</pre>
+
+    <h3>2. Count all rows in the Sales table</h3>
+    <pre>SELECT COUNT(*) FROM Sales;</pre>
+
+    <h3>3. Sum of Order_Price in the Sales table</h3>
+    <pre>SELECT SUM(Order_Price) FROM Sales;</pre>
+
+    <h3>4. Average of Order_Quantity in the Sales table</h3>
+    <pre>SELECT AVG(Order_Quantity) FROM Sales;</pre>
+
+    <h3>5. Minimum Order_Price in the Sales table</h3>
+    <pre>SELECT MIN(Order_Price) FROM Sales;</pre>
+
+    <h3>6. Maximum Order_Price in the Sales table</h3>
+    <pre>SELECT MAX(Order_Price) FROM Sales;</pre>
+
+
+
+    <h1> Another Example </h1>
+    <h2> Suppose we have two tables</h2>
+    <h2>Table 1: ITEMS_ORDERED</h2>
+    <pre>
+CREATE TABLE ITEMS_ORDERED (
+    Customer_id INT,
+    Order_date DATE,
+    Item VARCHAR(50),
+    Quantity INT,
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO ITEMS_ORDERED (Customer_id, Order_date, Item, Quantity, Price) VALUES
+(10330, '1999-06-30', 'Pogo stick', 1, 28.00),
+(10101, '1999-06-30', 'Raft', 1, 58.00),
+(10298, '1999-07-01', 'Skateboard', 1, 33.00),
+(10101, '1999-07-01', 'Life Vest', 4, 125.00),
+(10299, '1999-07-06', 'Parachute', 1, 1250.00),
+(10339, '1999-07-27', 'Umbrella', 1, 4.50),
+(10449, '1999-08-13', 'Unicycle', 1, 180.79),
+(10439, '1999-08-14', 'Ski Poles', 2, 25.50),
+(10101, '1999-08-18', 'Rain Coat', 1, 18.30),
+(10449, '1999-09-01', 'Snow Shoes', 1, 45.00),
+(10439, '1999-09-18', 'Tent', 1, 88.00),
+(10298, '1999-09-19', 'Lantern', 2, 29.00),
+(10410, '1999-10-28', 'Sleeping Bag', 1, 89.22),
+(10438, '1999-11-01', 'Umbrella', 1, 6.75),
+(10438, '1999-11-02', 'Pillow', 1, 8.50),
+(10298, '1999-12-01', 'Helmet', 1, 22.00),
+(10449, '1999-12-15', 'Bicycle', 1, 380.50);
+
+    </pre>
+
+    <h2>Table 2: CUSTOMERS</h2>
+    <pre>
+CREATE TABLE CUSTOMERS (
+    Customer_id INT,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    city VARCHAR(50),
+    state VARCHAR(50)
+);
+        
+INSERT INTO CUSTOMERS (Customer_id, firstname, lastname, city, state) VALUES
+(10101, 'John', 'Gray', 'Lynden', 'Washington'),
+(10299, 'Elroy', 'Keller', 'Snoqualmie', 'Washington'),
+(10315, 'Lisa', 'Jones', 'Oshkosh', 'Wisconsin'),
+(10325, 'Ginger', 'Schultz', 'Pocatello', 'Idaho'),
+(10329, 'Kelly', 'Mendoza', 'Kailua', 'Hawaii'),
+(10330, 'Shawn', 'Dalton', 'Cannon Beach', 'Oregon'),
+(10338, 'Michael', 'Howell', 'Tillamook', 'Oregon'),
+(10339, 'Anthony', 'Sanchez', 'Winslow', 'Arizona'),
+(10408, 'Elroy', 'Cleaver', 'Globe', 'Arizona'),
+(10410, 'Mary Ann', 'Howell', 'Charleston', 'South Carolina'),
+(10413, 'Donald', 'Davids', 'Gila Bend', 'Arizona'),
+(10419, 'Linda', 'Sakahara', 'Nogales', 'Arizona'),
+(10429, 'Sarah', 'Graham', 'Greensboro', 'North Carolina'),
+(10438, 'Kevin', 'Smith', 'Durango', 'Colorado'),
+(10439, 'Conrad', 'Giles', 'Telluride', 'Colorado'),
+(10449, 'Isabela', 'Moore', 'Yuma', 'Arizona');
+    </pre>
+    <h2>Answer the following questions</h2>
+    <h3>1. Select the maximum price of any item ordered in the items_ordered table</h3>
+    <!-- <pre>SELECT MAX(Price) FROM ITEMS_ORDERED;</pre> -->
+    <h3>2. Select the average price of all of the items ordered that were purchased in the month of Dec.</h3>
+    <!-- <pre>SELECT AVG(Price) FROM ITEMS_ORDERED WHERE MONTH(Order_date) = 12;</pre> -->
+    <h3>3. What is the total number of rows in the items_ordered table?</h3>
+    <!-- <pre>SELECT COUNT(*) FROM ITEMS_ORDERED;</pre> -->
+    <h3>4. For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent?</h3>
+    <!-- <pre>SELECT MIN(Price) FROM ITEMS_ORDERED WHERE Item = 'Tent';</pre> -->
+</body>
+</html>

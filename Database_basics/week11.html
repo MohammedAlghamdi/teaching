@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11 : Functionalities of DBMS</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { color: navy; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Week 11 : Functionalities of DBMS</h1>
+
+    <p>SQL functions allow for manipulation of data directly in your queries, useful for processing strings, dates, and performing calculations. Below, we cover various SQL functions and provide examples of their use in a hypothetical <code>Employees</code> table.</p>
+
+    <h2>1. String Manipulation Functions</h2>
+    <ul>
+        <li><code>CONCAT()</code>: Joins two or more strings into one.</li>
+        <li><code>UPPER(), LOWER(), INITCAP()</code>: Changes string casing.</li>
+        <li><code>LPAD(), RPAD()</code>: Adds padding characters to a string.</li>
+        <li><code>LTRIM(), RTRIM()</code>: Trims characters from a string.</li>
+        <li><code>REPLACE(), SUBSTR(), INSTR()</code>: Modifies or inspects parts of a string.</li>
+    </ul>
+
+    <h2>2. Date Manipulation Functions</h2>
+    <ul>
+        <li><code>ADD_MONTHS(), NEXT_DAY()</code>: Manipulates date values by adding months or finding the next specified weekday.</li>
+        <li><code>MONTHS_BETWEEN()</code>: Calculates the number of months between two dates.</li>
+        <li><code>ROUND() (date)</code>: Rounds a date to the specified unit.</li>
+    </ul>
+
+    <h2>3. Conversion and Miscellaneous Functions</h2>
+    <ul>
+        <li><code>TO_CHAR(), TO_DATE()</code>: Converts between strings and date or numeric formats.</li>
+        <li><code>ASCII(), CHR()</code>: Converts between characters and their ASCII codes.</li>
+        <li><code>TRANSLATE()</code>: Replaces several characters in a string based on a mapping.</li>
+    </ul>
+
+    <h2>Example SQL Setup and Queries</h2>
+    <p>Assume we have an <code>Employees</code> table with employee details. Below are SQL commands to create this table, insert data, and apply SQL functions.</p>
+    <code>
+        CREATE TABLE Employees (
+            employee_id INT,
+            last_name VARCHAR(100),
+            salary DECIMAL(10, 2),
+            hire_date DATE
+        );
+        INSERT INTO Employees VALUES (1, 'Baer', 50000, '1993-06-07');
+        INSERT INTO Employees VALUES (2, 'Smith', 40000, '2001-02-20');
+        INSERT INTO Employees VALUES (3, 'Jones', 55000, '1999-11-15');
+    </code>
+
+    <h3>Using String Functions</h3>
+    <code>SELECT CONCAT(last_name, ' works here.') AS EmployeeStatement FROM Employees;</code><br>
+    <code>SELECT UPPER(last_name) AS UpperCaseLastName FROM Employees;</code><br>
+    <code>SELECT LPAD(last_name, 10, '*') AS PaddedLastName FROM Employees;</code>
+
+    <h3>Using Date Functions</h3>
+    <code>SELECT TO_CHAR(ADD_MONTHS(hire_date, 1), 'DD-MON-YYYY') AS NextMonth FROM Employees WHERE employee_id = 1;</code><br>
+    <code>SELECT MONTHS_BETWEEN('2024-04-01', hire_date) AS MonthsWorking FROM Employees;</code>
+
+    <h3>Using Conversion Functions</h3>
+    <code>SELECT ASCII(last_name) AS LastNameASCII FROM Employees WHERE last_name = 'Baer';</code><br>
+    <code>SELECT TO_CHAR(SYSDATE, 'Day, Month DD, YYYY') AS CurrentDate FROM DUAL;</code>
+
+    <p><em>Note: After testing, remember to clean up the database.</em></p>
+    <code>DROP TABLE Employees;</code>
+</body>
+</html>
