@@ -1,0 +1,113 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 11</title>
+
+
+</head>
+<body>
+<h1>Basic Networking Commands</h1>
+
+<section>
+<h2>1. Finding the IP Address Using <code>ip</code></h2>
+<p>The <code>ip</code> command is used to display and manipulate routing, network devices, interfaces, and tunnels.</p>
+<pre><code>ip addr show</code></pre>
+<p>This command lists all the network interfaces along with their IP addresses.</p>
+</section>
+
+<section>
+<h2>2. Checking Connectivity with <code>ping</code></h2>
+<p>The <code>ping</code> command checks the connectivity between the host machine and a target domain or IP address.</p>
+<pre><code>ping google.com</code></pre>
+<p>Press <kbd>Ctrl+C</kbd> to stop pinging.</p>
+</section>
+
+<section>
+<h2>3. DNS and Name Resolution</h2>
+<p>DNS (Domain Name System) resolves domain names into IP addresses.</p>
+<ul>
+<li><strong>/etc/hosts:</strong> First checked for name resolutions.</li>
+<li><strong>/etc/resolv.conf:</strong> Lists DNS servers used for resolving domain names.</li>
+</ul>
+</section>
+
+<section>
+<h2>4. Managing DNS with <code>systemd-resolved</code></h2>
+<p>Modern systems use <code>systemd-resolved</code> for managing DNS settings. It's configured through <code>/etc/systemd/resolved.conf</code>.</p>
+<pre><code>ls -l /etc/resolv.conf
+cat /etc/resolv.conf</code></pre>
+</section>
+
+<section>
+<h2>5. Using <code>resolvectl</code> for DNS Management</h2>
+<p><code>resolvectl</code> is used to interact with <code>systemd-resolved</code> to manage DNS settings and view DNS statistics.</p>
+<pre><code>resolvectl status
+resolvectl query example.com</code></pre>
+</section>
+
+<section>
+<h2>6. Basic DNS Lookup with <code>host</code></h2>
+<p>The <code>host</code> command performs DNS lookups and displays IP addresses for given hostnames.</p>
+<pre><code>host www.example.com</code></pre>
+</section>
+
+<section>
+<h2>7. Advanced DNS Queries with <code>dig</code></h2>
+<p><code>dig</code> provides detailed information about domain names and their DNS records.</p>
+<pre><code>dig example.com
+dig +short example.com TXT</code></pre>
+</section>
+
+<section>
+<h2>8. Socket Statistics with <code>ss</code></h2>
+<p>The <code>ss</code> command is used to dump socket statistics. It can display sockets, listening ports, and other details.</p>
+<pre><code>ss -tulwn</code></pre>
+</section>
+
+<section>
+<h2>9. Tracing Network Route with <code>traceroute</code></h2>
+<p><code>traceroute</code> shows the path packets take to reach a host.</p>
+<pre><code>traceroute www.example.com</code></pre>
+</section>
+
+<section>
+<h2>10. Tracing Path with <code>tracepath</code></h2>
+<p><code>tracepath</code> traces the path to a network host and discovers the MTU (Maximum Transmission Unit) along that path.</p>
+<pre><code>tracepath www.example.com</code></pre>
+</section>
+
+<section>
+<h2>11. Remote Login with <code>ssh</code></h2>
+<p>SSH (Secure Shell) is used for secure remote login from one computer to another.</p>
+<pre><code>ssh username@hostname</code></pre>
+</section>
+
+<section>
+<h2>12. Generating SSH Keys with <code>ssh-keygen</code></h2>
+<p>SSH keys enhance security for SSH connections.</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code></pre>
+</section>
+
+<section>
+<h2>13. Copying SSH Keys with <code>ssh-copy-id</code></h2>
+<p>This command is used to copy SSH public keys to remote hosts.</p>
+<pre><code>ssh-copy-id username@hostname</code></pre>
+</section>
+
+<section>
+<h2>14. Disabling SSH Password Authentication</h2>
+<p>For increased security, password authentication can be disabled in SSH.</p>
+<p>Edit <code>/etc/ssh/sshd_config</code> and set <code>PasswordAuthentication</code> to no.</p>
+</section>
+
+<section>
+<h2>15. Viewing Active Network Connections with <code>lsof</code></h2>
+<p>List open files related to network connections using <code>lsof</code>.</p>
+<pre><code>sudo lsof -i</code></pre>
+</section>
+
+</body>
+</html>

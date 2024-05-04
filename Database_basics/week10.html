@@ -118,12 +118,14 @@ INSERT INTO CUSTOMERS (Customer_id, firstname, lastname, city, state) VALUES
     </pre>
     <h2>Answer the following questions</h2>
     <h3>1. Select the maximum price of any item ordered in the items_ordered table</h3>
-    <!-- <pre>SELECT MAX(Price) FROM ITEMS_ORDERED;</pre> -->
+    <pre>SELECT MAX(Price) FROM ITEMS_ORDERED;</pre>
     <h3>2. Select the average price of all of the items ordered that were purchased in the month of Dec.</h3>
-    <!-- <pre>SELECT AVG(Price) FROM ITEMS_ORDERED WHERE MONTH(Order_date) = 12;</pre> -->
+    <pre>SELECT AVG(Price) FROM ITEMS_ORDERED WHERE MONTH(Order_date) = 12;</pre>
+    <pre>SELECT AVG(Price) FROM ITEMS_ORDERED WHERE strftime('%m', Order_date) = '12'; </pre>
+    <pre>SELECT AVG(Price) FROM ITEMS_ORDERED WHERE Order_date like '%-12%';</pre>
     <h3>3. What is the total number of rows in the items_ordered table?</h3>
-    <!-- <pre>SELECT COUNT(*) FROM ITEMS_ORDERED;</pre> -->
+    <pre>SELECT COUNT(*) FROM ITEMS_ORDERED;</pre>
     <h3>4. For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent?</h3>
-    <!-- <pre>SELECT MIN(Price) FROM ITEMS_ORDERED WHERE Item = 'Tent';</pre> -->
+    <pre>SELECT MIN(Price) FROM ITEMS_ORDERED WHERE Item = 'Tent';</pre>
 </body>
 </html>
