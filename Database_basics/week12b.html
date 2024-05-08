@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12b</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 12b: Functions and Procedures</h1>
+    <p>This week covers how to create and use functions and procedures in Oracle's PL/SQL, using a simple employee table as an example.</p>
+    
+    <h2>Step 1: Creating the Employee Table</h2>
+    <p>First, we'll create a table named <code>emp_tbl</code> that will hold employee details:</p>
+    <pre>
+CREATE TABLE emp_tbl (
+    empID VARCHAR2(10),
+    first_name VARCHAR2(20),
+    last_name VARCHAR2(20),
+    salary NUMBER
+);
+    </pre>
+    
+    <h2>Step 2: Inserting Data into the Table</h2>
+    <p>Insert sample data into the <code>emp_tbl</code>:</p>
+    <pre>
+INSERT INTO emp_tbl (empID, first_name, last_name, salary) VALUES ('100', 'John', 'Doe', 50000);
+INSERT INTO emp_tbl (empID, first_name, last_name, salary) VALUES ('101', 'Jane', 'Doe', 60000);
+    </pre>
+    
+    <h2>Step 3: Creating and Testing a Function</h2>
+    <p>Create a function <code>employer_details_func</code> to return an employee's first name based on their ID:</p>
+    <pre>
+CREATE OR REPLACE FUNCTION employer_details_func
+RETURN VARCHAR2(20);
+IS
+    emp_name VARCHAR2(20);
+BEGIN
+    SELECT first_name INTO emp_name
+    FROM emp_tbl
+    WHERE empID = '100';
+    RETURN emp_name;
+END;
+    </pre>
+    <p>To test the function, execute the following SQL:</p>
+    <pre>
+SELECT employer_details_func() FROM dual;
+    </pre>
+    
+    <h2>Step 4: Creating and Executing a Stored Procedure</h2>
+    <p>Create a procedure <code>employer_details</code> to print details of all employees:</p>
+    <pre>
+CREATE OR REPLACE PROCEDURE employer_details
+IS
+    CURSOR emp_cur IS  
+    SELECT first_name, last_name, salary FROM emp_tbl;
+    emp_rec emp_cur%ROWTYPE;
+BEGIN
+    FOR emp_rec IN emp_cur  
+    LOOP
+        dbms_output.put_line(emp_rec.first_name || ' ' || emp_rec.last_name || ' ' || emp_rec.salary);
+    END LOOP;
+END;
+    </pre>
+    <p>To execute the procedure and see the output in an appropriate environment:</p>
+    <pre>
+EXECUTE employer_details;
+    </pre>
+    
+    <p>This concludes our basic tutorial on using functions and procedures in PL/SQL. Feel free to modify the SQL commands to explore further or fit your specific requirements.</p>
+</body>
+</html>

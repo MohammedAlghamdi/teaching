@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12a</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 8px;
+            display: block;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #2a5699;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 12a: Understanding Functions and Procedures</h1>
+    <p>This tutorial explains the basic concepts, syntax, and examples of functions and procedures in PL/SQL, making it easier for beginners to get started with database programming.</p>
+
+    <h2>What is a Function in PL/SQL?</h2>
+    <p>A function is a named block of code that performs a task and returns a value. It is useful for tasks that need to be repeated with different inputs and a result is expected every time.</p>
+    <h3>Function Syntax</h3>
+    <code>
+CREATE [OR REPLACE] FUNCTION function_name [parameters]<br>
+RETURN return_type<br>
+IS<br>
+    -- Declaration section for variables<br>
+BEGIN<br>
+    -- Code for processing<br>
+    RETURN value;<br>
+EXCEPTION<br>
+    -- Exception handling<br>
+END;
+    </code>
+
+    <h3>Example: Adding Two Numbers</h3>
+    <code>
+CREATE FUNCTION add_numbers(x NUMBER, y NUMBER)<br>
+RETURN NUMBER<br>
+IS<br>
+    result NUMBER;<br>
+BEGIN<br>
+    result := x + y;  -- Calculate the sum of x and y<br>
+    RETURN result;    -- Return the calculated sum<br>
+END;
+    </code>
+    <p>Usage Example:</p>
+    <code>SELECT add_numbers(10, 20) FROM dual;</code>
+    <p>This SQL query will output <strong>30</strong>.</p>
+
+    <h2>What is a Procedure in PL/SQL?</h2>
+    <p>A procedure is similar to a function but does not return a value. It's used to perform an operation, such as updating data or handling transactions.</p>
+    <h3>Procedure Syntax</h3>
+    <code>
+CREATE [OR REPLACE] PROCEDURE procedure_name [parameters]<br>
+IS<br>
+    -- Declaration section for variables<br>
+BEGIN<br>
+    -- Code for processing<br>
+EXCEPTION<br>
+    -- Exception handling<br>
+END;
+    </code>
+
+    <h3>Example: Updating Employee Salary</h3>
+    <code>
+CREATE PROCEDURE update_salary(emp_id NUMBER, new_salary NUMBER)<br>
+IS<br>
+BEGIN<br>
+    UPDATE emp_tbl SET salary = new_salary WHERE empID = emp_id;<br>
+    COMMIT;<br>
+EXCEPTION<br>
+    WHEN OTHERS THEN<br>
+        ROLLBACK;<br>
+        RAISE;<br>
+END;
+    </code>
+    <p>Usage Example:</p>
+    <code>EXECUTE update_salary(101, 65000);</code>
+    <p>This command updates the salary of employee <strong>101</strong> to <strong>65000</strong>.</p>
+
+    <p>This tutorial has covered the basics of creating and using functions and procedures in PL/SQL. With practice, these tools can greatly enhance your ability to manipulate and manage data efficiently in an Oracle database.</p>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 13: SQL Cursors and Triggers</title>
+<style>
+  body {font-family: Arial, sans-serif; line-height: 1.6;}
+  table, th, td {border: 1px solid black; border-collapse: collapse;}
+  th, td {padding: 8px; text-align: left;}
+  code {background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px;}
+</style>
+</head>
+<body>
+<h1>SQL Cursors and Triggers Tutorial</h1>
+
+<h2>Introduction</h2>
+<p>This tutorial explores the concepts of SQL cursors and triggers, powerful tools in database management for handling data manipulation and response to data changes in SQL databases.</p>
+
+<h2>Part 1: SQL Cursors</h2>
+<h3>What is a Cursor?</h3>
+<p>A cursor in SQL is a database object used to manipulate data on a row-by-row basis. It allows you to retrieve multiple rows and process each row individually, which is useful in handling complex logic that cannot be executed through a single SQL statement.</p>
+
+<h3>Types of Cursors</h3>
+<ul>
+  <li><strong>Implicit Cursors:</strong> Automatically created by SQL when DML statements like INSERT, UPDATE, DELETE, or a SELECT statement that returns only one row are executed.</li>
+  <li><strong>Explicit Cursors:</strong> Defined by the programmer to handle queries that return multiple rows, giving the programmer control over how each row is processed.</li>
+</ul>
+
+<h3>Using Explicit Cursors</h3>
+<p>Below are the steps involved in using an explicit cursor:</p>
+<ol>
+  <li><strong>Declare the Cursor:</strong> Define the SQL SELECT statement.</li>
+  <li><strong>Open the Cursor:</strong> Open it to start processing the fetched data.</li>
+  <li><strong>Fetch Data from the Cursor:</strong> Retrieve each row into local variables.</li>
+  <li><strong>Close the Cursor:</strong> Release the cursor and its resources.</li>
+</ol>
+
+<h3>Example of an Explicit Cursor</h3>
+<p>Imagine a database table named <code>Employees</code> structured as follows:</p>
+<table>
+  <tr><th>ID</th><th>Name</th><th>Department</th><th>Salary</th></tr>
+  <tr><td>1</td><td>Alice</td><td>HR</td><td>3000</td></tr>
+  <tr><td>2</td><td>Bob</td><td>Development</td><td>4000</td></tr>
+</table>
+<pre>
+DECLARE
+  CURSOR emp_cursor IS SELECT ID, Name FROM Employees WHERE Department = 'HR';
+  emp_record emp_cursor%ROWTYPE;
+BEGIN
+  OPEN emp_cursor;
+  FETCH emp_cursor INTO emp_record;
+  WHILE emp_cursor%FOUND LOOP
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_record.ID || ', Name: ' || emp_record.Name);
+    FETCH emp_cursor INTO emp_record;
+  END LOOP;
+  CLOSE emp_cursor;
+END;
+</pre>
+
+<h2>Part 2: SQL Triggers</h2>
+<h3>What is a Trigger?</h3>
+<p>A trigger is a special type of stored procedure that automatically runs when certain events occur in the database. Typically, these events are modifications such as INSERT, UPDATE, or DELETE performed on a table.</p>
+
+<h3>Types of Triggers</h3>
+<ul>
+  <li><strong>BEFORE Triggers:</strong> Execute before the DML event.</li>
+  <li><strong>AFTER Triggers:</strong> Execute after the DML event.</li>
+  <li><strong>INSTEAD OF Triggers:</strong> Execute in place of the DML event, commonly used with views.</li>
+</ul>
+
+<h3>Trigger Syntax</h3>
+<pre>
+CREATE TRIGGER trigger_name
+BEFORE | AFTER | INSTEAD OF EVENT
+ON table_name
+FOR EACH ROW
+BEGIN
+  -- Trigger logic here
+END;
+</pre>
+
+<h3>Example of a Trigger</h3>
+<p>Suppose you want to create a trigger that logs every update made to the <code>Salary</code> column in the <code>Employees</code> table:</p>
+<pre>
+CREATE OR REPLACE TRIGGER salary_update_log
+AFTER UPDATE OF Salary ON Employees
+FOR EACH ROW
+BEGIN
+  INSERT INTO Salary_Log (Employee_ID, Old_Salary, New_Salary, Change_Date)
+  VALUES (:OLD.ID, :OLD.Salary, :NEW.Salary, SYSDATE);
+END;
+</pre>
+
+<h2>Conclusion</h2>
+<p>This tutorial provided a comprehensive overview of SQL cursors and triggers, demonstrating their syntax, usage, and practical examples. Cursors are ideal for row-by-row data manipulation, while triggers help in automatically responding to database events.</p>
+
+</body>
+</html>
